@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Мой сайт</title>
+    <style>
+        .wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 100px;
+            padding: 0 20px;
+        }
+        .news {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 500px;
+            padding: 20px;
+        }
+        .news ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            font-size: 20px;
+        }
+        .news ul li {
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+        .news ul li h2 {
+            margin-top: 0;
+            font-size: 24px;
+        }
+        .news ul li p {
+            margin-bottom: 0;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <h1>Добро пожаловать на мой сайт!</h1>
+        {% if 'username' in session %}
+            <a href="{{ url_for('profile') }}">Профиль</a>
+        {% else %}
+            <a href="{{ url_for('login') }}">Войти</a>
+            <a href="{{ url_for('register') }}">Зарегистрироваться</a>
+        {% endif %}
+    </div>
+    <div class="news">
+        <ul>
+            {% for news_item in news %}
+                <li>
+                    <h2>{{ news_item.title }}</h2>
+                    <div>{{ news_item.content }}</div>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>

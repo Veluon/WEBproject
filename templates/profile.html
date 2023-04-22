@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Профиль пользователя {{ session['username'] }}</h1>
+
+  <a href="{{ url_for('index') }}" class="btn btn-primary">Главная</a>
+  <a href="{{ url_for('add_news') }}" class="btn btn-primary">Создать новость</a>
+  <a href="{{ url_for('logout') }}" class="btn btn-danger">Выйти</a>
+{% endblock %}
