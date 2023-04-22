@@ -90,12 +90,10 @@ def register():
         username = form.username.data
         password = form.password.data
 
-        # проверяем, что пользователь с таким именем не существует
         user = User.query.filter_by(username=username).first()
         if user:
             return render_template('register.html', form=form, error='Пользователь с таким именем уже существует')
 
-        # создаём нового пользователя
         new_user = User(username=username, password=password)
         db.session.add(new_user)
         db.session.commit()
