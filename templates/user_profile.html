@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Профиль пользователя {{ user.username }}</h1>
+    <a href="{{ url_for('index') }}" class="btn btn-primary">Главная</a>
+    <hr>
+    <h2>Новости пользователя:</h2>
+    {% if news %}
+        <ul class="list-group">
+            {% for news_item in news %}
+                <li class="list-group-item">
+                    <h3>{{ news_item.title }}</h3>
+                    <p>{{ news_item.content }}</p>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>У этого пользователя нет новостей.</p>
+    {% endif %}
+{% endblock %}
